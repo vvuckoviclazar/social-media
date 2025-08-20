@@ -1,0 +1,496 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  font-size: 6.25%;
+}
+
+body {
+  font-family: sans-serif;
+  padding-top: 5rem;
+}
+
+.search-loop {
+  width: 20rem;
+}
+
+.img {
+  border-radius: 50%;
+  width: 55rem;
+  height: 50rem;
+  font-weight: bold;
+  object-fit: cover;
+}
+
+.img2 {
+  position: absolute;
+  top: 64%;
+  left: 3%;
+  border-radius: 50%;
+  width: 124rem;
+  height: 120rem;
+  font-weight: bold;
+  object-fit: cover;
+}
+
+.post-img {
+  border-radius: 50%;
+  width: 50rem;
+  height: 50rem;
+  font-weight: bold;
+  object-fit: cover;
+}
+
+header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 15rem;
+  padding-right: 15rem;
+  border-bottom: 1rem solid rgb(185, 177, 205);
+  padding-bottom: 5rem;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background-color: rgb(222, 211, 242);
+  height: 25%;
+  margin-top: 15rem;
+  padding: 3rem 23rem 3rem 9rem;
+  border-radius: 30rem;
+  gap: 5rem;
+}
+
+.find-friends {
+  background-color: transparent;
+  border: none;
+  font-size: 17rem;
+  color: black;
+}
+
+.introduce-div {
+  width: 80%;
+  margin: 0 auto;
+  position: relative;
+  border: 1rem solid rgb(182, 174, 202);
+  border-radius: 0rem 0rem 10rem 10rem;
+  margin-bottom: 15rem;
+}
+
+.background-picture-div {
+  margin-bottom: 15rem;
+  display: flex;
+  justify-content: center;
+}
+
+.background-image {
+  width: 100%;
+  height: 325rem;
+  display: inline-block;
+}
+
+.name-div {
+  padding-left: 197rem;
+  padding-bottom: 20rem;
+}
+
+h1 {
+  font-size: 23rem;
+  margin-bottom: 5rem;
+}
+
+p {
+  font-size: 17rem;
+  font-weight: 300;
+}
+
+.write-post {
+  background-color: rgb(222, 211, 242);
+  padding: 5rem 23rem 5rem 18rem;
+  border-radius: 30rem;
+  gap: 5rem;
+  border: none;
+  width: 28%;
+  font-size: 21rem;
+}
+
+.write-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+  margin-bottom: 15rem;
+}
+
+.add-post {
+  color: white;
+  background-color: rgb(135, 18, 135);
+  border-radius: 5rem;
+  font-size: 16rem;
+  padding: 5rem 25rem 5rem 25rem;
+  font-weight: bold;
+}
+
+.add-post:hover {
+  background-color: rgb(131, 64, 131);
+}
+
+.friends-and-posts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: rgb(228, 206, 245);
+  padding: 20rem 90rem 20rem 20rem;
+}
+
+.width-div {
+  background-color: white;
+  width: 80%;
+  padding: 10rem;
+  border-radius: 7rem;
+}
+
+.friends-div {
+  padding-left: 90rem;
+}
+
+.friend-card {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 2rem;
+  margin-top: 5rem;
+}
+
+.friend-img {
+  width: 125rem;
+  height: 125rem;
+  border-radius: 5rem;
+  gap: 3rem;
+  object-fit: cover;
+  margin-bottom: 3rem;
+}
+
+.friend-name {
+  font-size: 14rem;
+  font-weight: 500;
+}
+
+.friends-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.search-suggestions {
+  background-color: white;
+  border-radius: 0.5rem;
+  position: absolute;
+  top: 103%;
+  z-index: 5;
+  border-radius: 10rem;
+}
+
+.suggestion-item {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5rem;
+  z-index: 5;
+  width: 100%;
+  padding: 7rem;
+  border-radius: 10rem;
+  margin-bottom: 3rem;
+}
+
+.suggestion-item:hover {
+  background-color: rgb(248, 227, 243);
+}
+
+.suggestion-img {
+  width: 58rem;
+  height: 58rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.suggestion-name {
+  font-size: 23rem;
+  z-index: 5;
+  font-weight: 300;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0rem;
+}
+
+li {
+  background-color: white;
+  margin-bottom: 10rem;
+  padding: 15rem;
+  border-radius: 10rem;
+}
+
+.userName-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 7rem;
+}
+
+.post-text {
+  font-size: 27rem;
+  font-weight: 200;
+  margin-bottom: 15rem;
+}
+
+.comment-section {
+  display: flex;
+  align-items: center;
+  gap: 5rem;
+}
+
+.post-buttons-div {
+  margin-bottom: 10rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7rem;
+}
+
+.like,
+.comment {
+  font-size: 15rem;
+  font-weight: bold;
+  background: transparent;
+  border: 1rem solid black;
+  border-radius: 15rem;
+}
+
+.comment-input {
+  width: 70%;
+  font-size: 20rem;
+  border-radius: 15rem;
+  border: 1rem solid black;
+  padding: 6rem;
+}
+
+.add-comment-btn {
+  color: white;
+  background-color: rgb(135, 18, 135);
+  border-radius: 5rem;
+  font-size: 16rem;
+  padding: 5rem 10rem 5rem 10rem;
+  font-weight: bold;
+}
+
+.liked {
+  background-color: pink;
+}
+
+.comment-user {
+  display: flex;
+  align-items: center;
+  gap: 5rem;
+}
+
+.comment-name {
+  font-size: 18rem;
+  font-weight: bold;
+  margin-bottom: 3rem;
+}
+
+.comment-style {
+  display: flex;
+  align-items: baseline;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+}
+
+.comment-text {
+  font-size: 18rem;
+  font-weight: 200;
+  background-color: rgb(222, 211, 242);
+  padding: 4rem 12rem 4rem 12rem;
+  border-radius: 14rem;
+  width: 100%;
+}
+
+.single-comment {
+  margin-bottom: 0rem;
+  padding: 10rem 5rem 10rem 15rem;
+}
+
+.comment-count {
+  text-align: end;
+}
+
+.like-comment-div {
+  display: grid;
+  grid-template-columns: 1.7fr 0.3fr;
+  margin-bottom: 5rem;
+}
+
+.left-mini-div {
+  display: flex;
+  align-items: center;
+  gap: 5rem;
+}
+
+.right-mini-div {
+  display: none;
+  position: absolute;
+}
+
+.right-mini-div.show {
+  display: block;
+  display: flex;
+  align-items: center;
+  gap: 5rem;
+  background-color: rgb(213, 200, 238);
+  border: 1rem solid rgb(194, 177, 226);
+  padding: 5rem 10rem 5rem 10rem;
+  top: -20%;
+  right: 105%;
+  border-radius: 5rem;
+}
+
+.delete-post-btn,
+.edit-post-btn {
+  color: white;
+  border-radius: 5rem;
+  font-size: 14rem;
+  padding: 4rem 9rem 4rem 9rem;
+  font-weight: bold;
+  width: 100%;
+}
+
+.edit-post-btn {
+  background-color: rgb(90, 18, 135);
+}
+
+.delete-post-btn {
+  background-color: rgb(135, 18, 47);
+}
+
+.edit-input {
+  width: 100%;
+  font-size: 25rem;
+  padding-left: 5rem;
+  padding-bottom: 3rem;
+  border-radius: 5rem;
+  border: none;
+  padding-top: 3rem;
+  background-color: rgb(222, 211, 242);
+}
+
+.finish-edit-btn {
+  color: white;
+  background-color: rgb(90, 18, 135);
+  border-radius: 5rem;
+  font-size: 14rem;
+  padding: 4rem 9rem 4rem 9rem;
+  font-weight: bold;
+}
+
+.size-6 {
+  width: 26rem;
+}
+
+.size-7 {
+  width: 16rem;
+}
+
+.open-div {
+  margin-bottom: 22rem;
+  position: relative;
+}
+
+.like-comment,
+.delete-comment {
+  font-size: 13rem;
+  border: none;
+  background-color: transparent;
+  font-weight: bold;
+}
+
+.like-comment {
+  margin-right: 3rem;
+}
+
+.like-comment:hover,
+.delete-comment:hover {
+  text-decoration: underline 2rem;
+}
+
+.like-delete-comment {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  padding-left: 10rem;
+  padding-right: 10rem;
+}
+
+.liked-comment {
+  color: rgb(0, 136, 255);
+}
+
+.dot-btn {
+  border: none;
+  background-color: transparent;
+}
+
+.edit-com-btn {
+  position: absolute;
+  color: black;
+  right: 0%;
+  font-size: 10rem;
+  top: 0%;
+  border: none;
+  background-color: transparent;
+}
+
+.size-6 {
+  width: 18rem;
+}
+
+.size-6:hover {
+  background-color: rgb(228, 228, 228);
+  border-radius: 5rem;
+  border: 1rem solid black;
+}
+
+.like-com-div {
+  display: flex;
+  align-items: center;
+}
+
+.likes-number {
+  font-size: 13rem;
+  margin-right: 2rem;
+}
+
+.size-8 {
+  width: 13rem;
+}
+
+.edit-comment-input {
+  width: 100%;
+  font-size: 18rem;
+  padding-left: 10rem;
+  padding-bottom: 3rem;
+  border-radius: 5rem;
+  border: none;
+  padding-top: 3rem;
+  background-color: rgb(222, 211, 242);
+  border-radius: 48rem;
+}
+
+.edit-com-btn.editing svg {
+  stroke: #3b82f6;
+}
