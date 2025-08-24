@@ -15,8 +15,9 @@ body {
 }
 
 .search-loop {
-  width: 20rem;
-  color: rgb(141, 141, 141);
+  font-size: 20rem;
+  color: gray;
+  margin-bottom: 2rem;
 }
 
 .img {
@@ -72,7 +73,7 @@ header {
   background-color: white;
   height: 25%;
   margin-top: 15rem;
-  padding: 4rem 30rem 4rem 9rem;
+  padding: 5rem 30rem 4rem 9rem;
   border-radius: 30rem;
   gap: 5rem;
 }
@@ -82,6 +83,7 @@ header {
   border: none;
   font-size: 17rem;
   color: black;
+  padding-left: 0rem;
 }
 
 .introduce-div {
@@ -155,6 +157,7 @@ p {
   width: 40%;
   padding: 7rem;
   border-radius: 12rem;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.12);
 }
 
 .add-post {
@@ -327,8 +330,10 @@ li {
   width: 70%;
   font-size: 20rem;
   border-radius: 15rem;
-  border: 1rem solid black;
   padding: 6rem;
+  background-color: rgb(242, 242, 242);
+  border: none;
+  padding-left: 12rem;
 }
 
 .add-comment-btn {
@@ -361,6 +366,7 @@ li {
   font-size: 18rem;
   font-weight: bold;
   margin-bottom: 3rem;
+  padding-left: 5rem;
 }
 
 .comment-style {
@@ -378,6 +384,7 @@ li {
   padding: 4rem 12rem 4rem 12rem;
   border-radius: 14rem;
   width: 100%;
+  margin-bottom: 5rem;
 }
 
 .single-comment {
@@ -464,14 +471,6 @@ li {
   font-weight: bold;
 }
 
-.size-6 {
-  width: 26rem;
-}
-
-.size-7 {
-  width: 16rem;
-}
-
 .open-div {
   margin-bottom: 22rem;
   position: relative;
@@ -479,14 +478,17 @@ li {
 
 .like-comment,
 .delete-comment {
-  font-size: 13rem;
+  font-size: 14rem;
   border: none;
   background-color: transparent;
   font-weight: bold;
+  cursor: pointer;
+  transition: text-decoration 0.3s;
 }
 
 .like-comment {
   margin-right: 3rem;
+  cursor: pointer;
 }
 
 .like-comment:hover,
@@ -501,10 +503,6 @@ li {
   justify-content: space-between;
   padding-left: 10rem;
   padding-right: 10rem;
-}
-
-.liked-comment {
-  color: rgb(0, 136, 255);
 }
 
 .dot-btn {
@@ -522,22 +520,19 @@ li {
   background-color: transparent;
 }
 
-.size-6 {
-  width: 18rem;
-}
-
 .like-com-div {
   display: flex;
   align-items: center;
 }
 
 .likes-number {
-  font-size: 13rem;
+  font-size: 15rem;
   margin-right: 2rem;
-}
-
-.size-8 {
-  width: 13rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .edit-comment-input {
@@ -569,4 +564,14 @@ li {
 
 .liked-by-text {
   padding-left: 2rem;
+}
+
+.post-like,
+.post-comment {
+  font-size: 18rem;
+}
+
+.comment-li {
+  margin-bottom: 0rem;
+  padding-bottom: 10rem;
 }

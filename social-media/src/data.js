@@ -14,10 +14,11 @@ export const userAccount = {
     {
       // date-fns
       // how to get six months ago
-      // react free library icons
+      id: 1,
       date: "about 6 months ago",
       text: "This platform is all about thoughtful reflections.",
       likes: [{ name: "James Brown" }, { name: "Oliveira Jones" }],
+      isOpened: false,
       comments: [
         {
           profile: "James Brown",
@@ -32,9 +33,11 @@ export const userAccount = {
       ],
     },
     {
+      id: 2,
       date: "about 1 year ago",
       text: "The world doesn't need more noise. It needs more meaning.",
       likes: [{ name: "Daniel Miller" }],
+      isOpened: false,
       comments: [
         {
           profile: "Daniel Miller",
