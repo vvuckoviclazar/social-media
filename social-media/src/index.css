@@ -11,30 +11,38 @@ html {
 
 body {
   font-family: sans-serif;
-  padding-top: 5rem;
+  background-color: rgb(243, 247, 250);
 }
 
 .search-loop {
   width: 20rem;
+  color: rgb(141, 141, 141);
 }
 
 .img {
   border-radius: 50%;
-  width: 55rem;
-  height: 50rem;
+  width: 65rem;
+  height: 60rem;
   font-weight: bold;
   object-fit: cover;
+  border: 1rem solid #dfc5f3;
+}
+
+input:focus-visible {
+  outline: none;
+  box-shadow: none;
 }
 
 .img2 {
   position: absolute;
-  top: 64%;
+  top: 62%;
   left: 3%;
   border-radius: 50%;
-  width: 124rem;
-  height: 120rem;
+  width: 140rem;
+  height: 136rem;
   font-weight: bold;
   object-fit: cover;
+  border: 3rem solid #4271ff;
 }
 
 .post-img {
@@ -51,17 +59,20 @@ header {
   justify-content: space-between;
   padding-left: 15rem;
   padding-right: 15rem;
+  padding-top: 5rem;
   border-bottom: 1rem solid rgb(185, 177, 205);
   padding-bottom: 5rem;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.12);
+  background: linear-gradient(90deg, #4271ff 0%, #7a3ef2 100%);
 }
 
 .search-bar {
   display: flex;
   align-items: center;
-  background-color: rgb(222, 211, 242);
+  background-color: white;
   height: 25%;
   margin-top: 15rem;
-  padding: 3rem 23rem 3rem 9rem;
+  padding: 4rem 30rem 4rem 9rem;
   border-radius: 30rem;
   gap: 5rem;
 }
@@ -77,9 +88,12 @@ header {
   width: 80%;
   margin: 0 auto;
   position: relative;
-  border: 1rem solid rgb(182, 174, 202);
+  border: 1rem solid #4271ff;
+  border-top: none;
   border-radius: 0rem 0rem 10rem 10rem;
-  margin-bottom: 15rem;
+  margin-bottom: 25rem;
+  background-color: white;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.12);
 }
 
 .background-picture-div {
@@ -100,77 +114,97 @@ header {
 }
 
 h1 {
-  font-size: 23rem;
+  font-size: 30rem;
   margin-bottom: 5rem;
+  padding-left: 15rem;
+  padding-top: 5rem;
+  color: rgb(48, 48, 48);
 }
 
 p {
   font-size: 17rem;
   font-weight: 300;
+  padding-left: 15rem;
+  margin-bottom: 7rem;
 }
 
 .write-post {
   background-color: rgb(222, 211, 242);
-  padding: 5rem 23rem 5rem 18rem;
-  border-radius: 30rem;
+  padding: 5rem 0rem 5rem 15rem;
+  border-radius: 7rem;
   gap: 5rem;
   border: none;
-  width: 28%;
+  width: 100%;
   font-size: 21rem;
+  font-weight: 300;
+  background-color: rgb(242, 242, 242);
+}
+
+.write-post::placeholder {
+  font-size: 20rem;
 }
 
 .write-form {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 5rem;
+  gap: 7rem;
   margin-bottom: 15rem;
+  background-color: white;
+  margin: 0 auto;
+  width: 40%;
+  padding: 7rem;
+  border-radius: 12rem;
 }
 
 .add-post {
   color: white;
-  background-color: rgb(135, 18, 135);
-  border-radius: 5rem;
-  font-size: 16rem;
-  padding: 5rem 25rem 5rem 25rem;
+  background-color: #4271ff;
+  border-radius: 8rem;
+  border: none;
+  font-size: 15rem;
+  padding: 8rem 0rem 8rem 0rem;
   font-weight: bold;
+  width: 110rem;
+  cursor: pointer;
+  transition: background 0.3s;
 }
 
 .add-post:hover {
-  background-color: rgb(131, 64, 131);
+  background-color: #2253e6;
 }
 
 .friends-and-posts {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  background-color: rgb(228, 206, 245);
   padding: 20rem 90rem 20rem 20rem;
 }
 
 .width-div {
   background-color: white;
   width: 80%;
-  padding: 10rem;
   border-radius: 7rem;
+  padding: 15rem 15rem 5rem 15rem;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.12);
 }
 
 .friends-div {
-  padding-left: 90rem;
+  padding-left: 130rem;
 }
 
 .friend-card {
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin-bottom: 2rem;
-  margin-top: 5rem;
+  margin-bottom: 10rem;
+  padding: 3rem;
+  box-shadow: none;
 }
 
 .friend-img {
-  width: 125rem;
-  height: 125rem;
-  border-radius: 5rem;
-  gap: 3rem;
+  width: 130rem;
+  height: 100rem;
+  border-radius: 12rem;
   object-fit: cover;
   margin-bottom: 3rem;
 }
@@ -230,9 +264,13 @@ ul {
 
 li {
   background-color: white;
-  margin-bottom: 10rem;
+  margin-bottom: 20rem;
   padding: 15rem;
   border-radius: 10rem;
+}
+
+.post-item {
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.12);
 }
 
 .userName-div {
@@ -263,11 +301,26 @@ li {
 
 .like,
 .comment {
-  font-size: 15rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+  font-size: 17rem;
   font-weight: bold;
   background: transparent;
-  border: 1rem solid black;
-  border-radius: 15rem;
+  border: none;
+  color: white;
+  border-radius: 7rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  background-color: #4271ff;
+  transition: background 0.3s;
+  cursor: pointer;
+}
+
+.like:hover,
+.comment:hover {
+  background-color: #2253e6;
 }
 
 .comment-input {
@@ -280,11 +333,18 @@ li {
 
 .add-comment-btn {
   color: white;
-  background-color: rgb(135, 18, 135);
+  background-color: #4271ff;
   border-radius: 5rem;
+  border: none;
   font-size: 16rem;
-  padding: 5rem 10rem 5rem 10rem;
+  padding: 7rem 10rem 7rem 10rem;
   font-weight: bold;
+  transition: background 0.3s;
+  cursor: pointer;
+}
+
+.add-comment-btn:hover {
+  background-color: #2253e6;
 }
 
 .liked {
@@ -314,7 +374,7 @@ li {
 .comment-text {
   font-size: 18rem;
   font-weight: 200;
-  background-color: rgb(222, 211, 242);
+  background-color: rgb(233, 241, 248);
   padding: 4rem 12rem 4rem 12rem;
   border-radius: 14rem;
   width: 100%;
@@ -327,18 +387,25 @@ li {
 
 .comment-count {
   text-align: end;
+  font-weight: bold;
+  transition: color 0.1s;
+  color: rgb(50, 50, 50);
+  cursor: pointer;
+}
+
+.comment-count:hover {
+  color: #3261ed;
 }
 
 .like-comment-div {
   display: grid;
-  grid-template-columns: 1.7fr 0.3fr;
+  grid-template-columns: 1.5fr 0.5fr;
   margin-bottom: 5rem;
 }
 
 .left-mini-div {
   display: flex;
   align-items: center;
-  gap: 5rem;
 }
 
 .right-mini-div {
@@ -459,12 +526,6 @@ li {
   width: 18rem;
 }
 
-.size-6:hover {
-  background-color: rgb(228, 228, 228);
-  border-radius: 5rem;
-  border: 1rem solid black;
-}
-
 .like-com-div {
   display: flex;
   align-items: center;
@@ -493,4 +554,19 @@ li {
 
 .edit-com-btn.editing svg {
   stroke: #3b82f6;
+}
+
+.date-p {
+  color: black;
+  font-size: 15rem;
+  color: rgb(76, 76, 76);
+}
+
+.post-h1 {
+  margin-bottom: 0rem;
+  font-size: 25rem;
+}
+
+.liked-by-text {
+  padding-left: 2rem;
 }
