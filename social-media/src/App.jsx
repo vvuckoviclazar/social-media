@@ -1,4 +1,4 @@
-import { use, useState } from "react";
+import { useState } from "react";
 import "./index.css";
 import { userAccount } from "./data";
 import { BiSolidLike } from "react-icons/bi";
@@ -8,11 +8,31 @@ import Btn from "./btn.jsx";
 
 function App() {
   const [posts, setPosts] = useState(userAccount.posts);
+  const [inputValue, setInputValue] = useState("");
+
+  const generateId = () => crypto.randomUUID();
 
   const toggleIsOpened = (id) => {
     setPosts((prev) =>
       prev.map((p) => (p.id === id ? { ...p, isOpened: !p.isOpened } : p))
     );
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const newObject = {
+      id: generateId(),
+      date: "one minute ago",
+      text: inputValue,
+      likes: [],
+      isOpened: false,
+      comments: [],
+    };
+
+    setPosts((prev) => [newObject, ...prev]);
+
+    setInputValue("");
   };
 
   return (
@@ -49,9 +69,17 @@ function App() {
         <img className="img2" src={`/${userAccount.picture}`} alt="" />
       </div>
 
-      <form className="write-form">
-        <input type="text" placeholder="Write a post" className="write-post" />
-        <Btn variation="add-post">Add post</Btn>
+      <form onSubmit={handleSubmit} className="write-form">
+        <input
+          type="text"
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+          placeholder="Write a post"
+          className="write-post"
+        />
+        <Btn variation="add-post" type="submit">
+          Add post
+        </Btn>
       </form>
 
       <div className="friends-and-posts">
@@ -76,7 +104,7 @@ function App() {
 
         <ul className="post-list">
           {posts.map((post, index) => (
-            <li key={index} className="post-item">
+            <li key={post.id} className="post-item">
               <div className="userName-div">
                 <div className="left-mini-div">
                   <img
