@@ -415,24 +415,6 @@ li {
   align-items: center;
 }
 
-.right-mini-div {
-  display: none;
-  position: absolute;
-}
-
-.right-mini-div.show {
-  display: block;
-  display: flex;
-  align-items: center;
-  gap: 5rem;
-  background-color: rgb(213, 200, 238);
-  border: 1rem solid rgb(194, 177, 226);
-  padding: 5rem 10rem 5rem 10rem;
-  top: -20%;
-  right: 105%;
-  border-radius: 5rem;
-}
-
 .delete-post-btn,
 .edit-post-btn {
   color: white;
@@ -441,39 +423,6 @@ li {
   padding: 4rem 9rem 4rem 9rem;
   font-weight: bold;
   width: 100%;
-}
-
-.edit-post-btn {
-  background-color: rgb(90, 18, 135);
-}
-
-.delete-post-btn {
-  background-color: rgb(135, 18, 47);
-}
-
-.edit-input {
-  width: 100%;
-  font-size: 25rem;
-  padding-left: 5rem;
-  padding-bottom: 3rem;
-  border-radius: 5rem;
-  border: none;
-  padding-top: 3rem;
-  background-color: rgb(222, 211, 242);
-}
-
-.finish-edit-btn {
-  color: white;
-  background-color: rgb(90, 18, 135);
-  border-radius: 5rem;
-  font-size: 14rem;
-  padding: 4rem 9rem 4rem 9rem;
-  font-weight: bold;
-}
-
-.open-div {
-  margin-bottom: 22rem;
-  position: relative;
 }
 
 .like-comment,
@@ -574,4 +523,67 @@ li {
 .comment-li {
   margin-bottom: 0rem;
   padding-bottom: 10rem;
+}
+
+.options-btn {
+  border: none;
+  background-color: transparent;
+  padding: 5rem 7rem 3rem 7rem;
+  border-radius: 50%;
+  margin-bottom: 20rem;
+  transition: background 0.3s ease;
+}
+
+.options-btn:hover {
+  background-color: rgb(198, 198, 198);
+  cursor: pointer;
+}
+
+.options-icon {
+  font-size: 23rem;
+}
+
+.right-mini-div {
+  position: relative;
+}
+
+.options-div {
+  position: absolute;
+  background-color: transparent;
+  top: 70%;
+  left: -110%;
+}
+
+.edit-btn,
+.delete-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10rem;
+  font-size: 20rem;
+  font-weight: bold;
+  width: 100%;
+  padding: 12rem 17rem 12rem 17rem;
+  cursor: pointer;
+  border: none;
+}
+
+.edit-btn {
+  border-radius: 7rem 7rem 0rem 0rem;
+  color: white;
+  background-color: rgb(0, 108, 202);
+}
+
+.delete-btn {
+  border-radius: 0rem 0rem 7rem 7rem;
+  color: white;
+  background-color: rgb(203, 0, 0);
+}
+
+.edit-btn:hover {
+  background-color: rgb(0, 122, 228);
+}
+
+.delete-btn:hover {
+  background-color: rgb(222, 0, 0);
 }

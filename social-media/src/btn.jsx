@@ -14,6 +14,12 @@ function Btn({ children, onClick, variation }) {
     modifierClass = "like-comment";
   } else if (variation === "delete-comment") {
     modifierClass = "delete-comment";
+  } else if (variation === "options-btn") {
+    modifierClass = "options-btn";
+  } else if (variation === "edit-btn") {
+    modifierClass = "edit-btn";
+  } else if (variation === "delete-btn") {
+    modifierClass = "delete-btn";
   }
 
   const finalClass = `${baseClass} ${modifierClass}`;

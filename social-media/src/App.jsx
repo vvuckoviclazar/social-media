@@ -5,6 +5,9 @@ import { BiSolidLike } from "react-icons/bi";
 import { CgComment } from "react-icons/cg";
 import { IoIosSearch } from "react-icons/io";
 import Btn from "./btn.jsx";
+import { HiOutlineAdjustmentsHorizontal } from "react-icons/hi2";
+import { FaRegEdit } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
 
 function App() {
   const [posts, setPosts] = useState(userAccount.posts);
@@ -12,9 +15,17 @@ function App() {
 
   const generateId = () => crypto.randomUUID();
 
-  const toggleIsOpened = (id) => {
+  const toggleOpenComments = (id) => {
     setPosts((prev) =>
-      prev.map((p) => (p.id === id ? { ...p, isOpened: !p.isOpened } : p))
+      prev.map((p) =>
+        p.id === id ? { ...p, openComments: !p.openComments } : p
+      )
+    );
+  };
+
+  const toggleOpenOptions = (id) => {
+    setPosts((prev) =>
+      prev.map((p) => (p.id === id ? { ...p, openOptions: !p.openOptions } : p))
     );
   };
 
@@ -26,7 +37,8 @@ function App() {
       date: "one minute ago",
       text: inputValue,
       likes: [],
-      isOpened: false,
+      openComments: false,
+      openOptions: false,
       comments: [],
     };
 
@@ -117,14 +129,36 @@ function App() {
                     <p className="date-p">{post.date}</p>
                   </div>
                 </div>
+                <div className="right-mini-div">
+                  <Btn
+                    variation="options-btn"
+                    onClick={() => toggleOpenOptions(post.id)}
+                  >
+                    <HiOutlineAdjustmentsHorizontal className="options-icon" />
+                  </Btn>
+                  {post.openOptions && (
+                    <div className="options-div">
+                      <Btn variation="edit-btn">
+                        Edit <FaRegEdit />
+                      </Btn>
+                      <Btn variation="delete-btn">
+                        Delete <MdDelete />
+                      </Btn>
+                    </div>
+                  )}
+                </div>
               </div>
               <h2 className="post-text">{post.text}</h2>
               <div className="like-comment-div">
                 <p className="liked-by-text">
-                  {post.likes.map((l) => l.name).join(", ")} liked this post.
+                  {post.likes.length > 0
+                    ? post.likes.map((l) => l.name).join(", ") +
+                      " liked this post."
+                    : ""}
                 </p>
+
                 <p
-                  onClick={() => toggleIsOpened(post.id)}
+                  onClick={() => toggleOpenComments(post.id)}
                   className="comment-count"
                 >
                   {post.comments.length} comments
