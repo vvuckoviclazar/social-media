@@ -14,35 +14,35 @@ export const userAccount = {
     {
       // date-fns
       // how to get six months ago
+      profile: "Lazar Vuckovic",
+      picture: "avatar-image2.jpg",
       id: 1,
       date: "about 6 months ago",
       text: "This platform is all about thoughtful reflections.",
       likes: [{ name: "James Brown" }, { name: "Oliveira Jones" }],
-      openComments: false,
-      openOptions: false,
       comments: [
         {
-          profile: "James Brown",
+          name: "James Brown",
           text: "Makes me ponder on the importance of staying true to one's moral compass.",
           image: "profile4.jpg",
         },
         {
-          profile: "Oliveira Jones",
+          name: "Oliveira Jones",
           text: "Sometimes the best option is to stick to your principles.",
           image: "profile5.jpg",
         },
       ],
     },
     {
+      profile: "Lazar Vuckovic",
+      picture: "avatar-image2.jpg",
       id: 2,
       date: "about 1 year ago",
       text: "The world doesn't need more noise. It needs more meaning.",
       likes: [{ name: "Daniel Miller" }],
-      openComments: false,
-      openOptions: false,
       comments: [
         {
-          profile: "Daniel Miller",
+          name: "Daniel Miller",
           text: "Couldn't agree more.",
           image: "profile6.jpg",
         },
