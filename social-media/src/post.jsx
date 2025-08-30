@@ -5,22 +5,30 @@ import { FaRegEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import Btn from "./btn.jsx";
 import { userAccount } from "./data";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Comments from "./comments.jsx";
+import { format, formatDistanceToNow } from "date-fns";
 
-function Post({ post }) {
+function Post({ post, onUpdateText, deletePost }) {
   const [openOptions, setOpenOptions] = useState(false);
   const [openComments, setOpenComments] = useState(false);
   const [postLikes, setPostLikes] = useState(post.likes);
+  const [isEditing, setIsEditing] = useState(false);
+  const [setTick] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => setTick((t) => t + 1), 60_000);
+    return () => clearInterval(id);
+  }, []);
 
   const isLiked = postLikes.some((l) => l.name === userAccount.owner);
 
   const likePost = () => {
-    setPostLikes((prev) =>
-      isLiked
-        ? prev.filter((l) => l.name !== userAccount.owner)
-        : [{ name: userAccount.owner }, ...prev]
-    );
+    setPostLikes((prev) => [{ name: userAccount.owner }, ...prev]);
+  };
+
+  const unlikePost = () => {
+    setPostLikes((prev) => prev.filter((l) => l.name !== userAccount.owner));
   };
 
   return (
@@ -29,8 +37,12 @@ function Post({ post }) {
         <div className="left-mini-div">
           <img className="post-img" src={`/${post.picture}`} alt="" />
           <div className="date-name-div">
-            <h1 className="post-h1">{post.profile}</h1>
-            <p className="date-p">{post.date}</p>
+            <h1 className="post-h1">{post.owner}</h1>
+            <p className="date-p">
+              {post.fixed
+                ? format(new Date(post.date), "MMM d, yyyy")
+                : formatDistanceToNow(new Date(post.date), { addSuffix: true })}
+            </p>
           </div>
         </div>
         <div className="right-mini-div">
@@ -42,17 +54,41 @@ function Post({ post }) {
           </Btn>
           {openOptions && (
             <div className="options-div">
-              <Btn variation="edit-btn">
-                Edit <FaRegEdit />
-              </Btn>
-              <Btn variation="delete-btn">
+              {isEditing ? (
+                <Btn
+                  onClick={() =>
+                    setIsEditing(!isEditing) || setOpenOptions(!openOptions)
+                  }
+                  variation="edit-btn"
+                >
+                  Finish
+                  <FaRegEdit />
+                </Btn>
+              ) : (
+                <Btn
+                  onClick={() => setIsEditing(!isEditing)}
+                  variation="edit-btn"
+                >
+                  Edit <FaRegEdit />
+                </Btn>
+              )}
+              <Btn onClick={() => deletePost(post.id)} variation="delete-btn">
                 Delete <MdDelete />
               </Btn>
             </div>
           )}
         </div>
       </div>
-      <h2 className="post-text">{post.text}</h2>
+      {isEditing ? (
+        <input
+          className="editing-input"
+          type="text"
+          value={post.text}
+          onChange={(e) => onUpdateText(post.id, e.target.value)}
+        />
+      ) : (
+        <h2 className="post-text">{post.text}</h2>
+      )}
       <div className="like-comment-div">
         <p className="liked-by-text">
           {postLikes.length > 0
@@ -69,7 +105,10 @@ function Post({ post }) {
       </div>
 
       <div className="post-buttons-div">
-        <Btn onClick={() => likePost()} variation="like">
+        <Btn
+          onClick={() => (isLiked ? unlikePost() : likePost())}
+          variation="like"
+        >
           Like
           <BiSolidLike
             className="post-like"

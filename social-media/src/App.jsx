@@ -4,10 +4,19 @@ import { IoIosSearch } from "react-icons/io";
 import Btn from "./btn.jsx";
 import Post from "./post.jsx";
 import { userAccount } from "./data";
+import { formatDistanceToNow } from "date-fns";
 
 function App() {
   const [posts, setPosts] = useState(userAccount.posts);
   const [inputValue, setInputValue] = useState("");
+
+  const updatePostText = (id, text) => {
+    setPosts((prev) => prev.map((p) => (p.id === id ? { ...p, text } : p)));
+  };
+
+  const deletePost = (id) => {
+    setPosts((prev) => prev.filter((p) => p.id !== id));
+  };
 
   const generateId = () => crypto.randomUUID();
 
@@ -15,10 +24,10 @@ function App() {
     e.preventDefault();
 
     const newObject = {
-      profile: userAccount.owner,
+      owner: userAccount.owner,
       picture: userAccount.picture,
       id: generateId(),
-      date: "one minute ago",
+      date: new Date().toISOString(),
       text: inputValue,
       likes: [],
       comments: [],
@@ -97,8 +106,13 @@ function App() {
         </div>
 
         <ul className="post-list">
-          {posts.map((post, index) => (
-            <Post key={post.id} post={post} />
+          {posts.map((post) => (
+            <Post
+              key={post.id}
+              post={post}
+              onUpdateText={updatePostText}
+              deletePost={deletePost}
+            />
           ))}
         </ul>
       </div>

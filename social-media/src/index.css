@@ -274,6 +274,7 @@ li {
 
 .post-item {
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.12);
+  max-width: 700rem;
 }
 
 .userName-div {
@@ -287,6 +288,7 @@ li {
   font-size: 27rem;
   font-weight: 200;
   margin-bottom: 15rem;
+  overflow-wrap: anywhere;
 }
 
 .comment-section {
@@ -586,4 +588,11 @@ li {
 
 .delete-btn:hover {
   background-color: rgb(222, 0, 0);
+}
+
+.editing-input {
+  width: 87%;
+  font-size: 27rem;
+  margin-bottom: 15rem;
+  padding-left: 5rem;
 }
