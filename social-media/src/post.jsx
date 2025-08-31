@@ -9,10 +9,16 @@ import { useEffect, useState } from "react";
 import Comments from "./comments.jsx";
 import { format, formatDistanceToNow } from "date-fns";
 
-function Post({ post, onUpdateText, deletePost }) {
+function Post({
+  post,
+  onUpdateText,
+  deletePost,
+  likePost,
+  unlikePost,
+  isLiked,
+}) {
   const [openOptions, setOpenOptions] = useState(false);
   const [openComments, setOpenComments] = useState(false);
-  const [postLikes, setPostLikes] = useState(post.likes);
   const [isEditing, setIsEditing] = useState(false);
   const [setTick] = useState(0);
 
@@ -20,16 +26,6 @@ function Post({ post, onUpdateText, deletePost }) {
     const id = setInterval(() => setTick((t) => t + 1), 60_000);
     return () => clearInterval(id);
   }, []);
-
-  const isLiked = postLikes.some((l) => l.name === userAccount.owner);
-
-  const likePost = () => {
-    setPostLikes((prev) => [{ name: userAccount.owner }, ...prev]);
-  };
-
-  const unlikePost = () => {
-    setPostLikes((prev) => prev.filter((l) => l.name !== userAccount.owner));
-  };
 
   return (
     <li className="post-item">
@@ -91,8 +87,8 @@ function Post({ post, onUpdateText, deletePost }) {
       )}
       <div className="like-comment-div">
         <p className="liked-by-text">
-          {postLikes.length > 0
-            ? postLikes.map((l) => l.name).join(", ") + " liked this post."
+          {post.likes.length > 0
+            ? post.likes.map((l) => l.name).join(", ") + " liked this post."
             : ""}
         </p>
 
@@ -106,7 +102,7 @@ function Post({ post, onUpdateText, deletePost }) {
 
       <div className="post-buttons-div">
         <Btn
-          onClick={() => (isLiked ? unlikePost() : likePost())}
+          onClick={() => (isLiked ? unlikePost(post.id) : likePost(post.id))}
           variation="like"
         >
           Like
@@ -134,7 +130,7 @@ function Post({ post, onUpdateText, deletePost }) {
       {openComments && (
         <ul className="comment-list">
           {post.comments.map((comment, index) => (
-            <Comments key={index} comment={comment} />
+            <Comments key={index} comment={comment} postId={post.id} />
           ))}
         </ul>
       )}

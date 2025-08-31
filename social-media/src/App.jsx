@@ -4,11 +4,30 @@ import { IoIosSearch } from "react-icons/io";
 import Btn from "./btn.jsx";
 import Post from "./post.jsx";
 import { userAccount } from "./data";
-import { formatDistanceToNow } from "date-fns";
 
 function App() {
   const [posts, setPosts] = useState(userAccount.posts);
   const [inputValue, setInputValue] = useState("");
+
+  const likePost = (id) => {
+    setPosts((prev) =>
+      prev.map((p) =>
+        p.id === id
+          ? { ...p, likes: [{ name: userAccount.owner }, ...p.likes] }
+          : p
+      )
+    );
+  };
+
+  const unlikePost = (id) => {
+    setPosts((prev) =>
+      prev.map((p) =>
+        p.id === id
+          ? { ...p, likes: p.likes.filter((l) => l.name !== userAccount.owner) }
+          : p
+      )
+    );
+  };
 
   const updatePostText = (id, text) => {
     setPosts((prev) => prev.map((p) => (p.id === id ? { ...p, text } : p)));
@@ -112,6 +131,9 @@ function App() {
               post={post}
               onUpdateText={updatePostText}
               deletePost={deletePost}
+              likePost={likePost}
+              unlikePost={unlikePost}
+              isLiked={post.likes.some((l) => l.name === userAccount.owner)}
             />
           ))}
         </ul>
