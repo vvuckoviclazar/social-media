@@ -16,11 +16,17 @@ function Post({
   likePost,
   unlikePost,
   isLiked,
+  addComment,
+  likeComment,
+  unlikeComment,
+  isCommentLiked,
+  ownerName,
 }) {
   const [openOptions, setOpenOptions] = useState(false);
   const [openComments, setOpenComments] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [setTick] = useState(0);
+  const [commentText, setCommentText] = useState("");
 
   useEffect(() => {
     const id = setInterval(() => setTick((t) => t + 1), 60_000);
@@ -123,14 +129,32 @@ function Post({
           type="text"
           className="comment-input"
           placeholder="Write a comment"
+          value={commentText}
+          onChange={(e) => setCommentText(e.target.value)}
         />
-        <button className="add-comment-btn">Add comment</button>
+        <Btn
+          onClick={() =>
+            addComment(post.id, commentText) ||
+            setCommentText("") ||
+            setOpenComments(!openComments)
+          }
+          variation="add-comment-btn"
+        >
+          Add comment
+        </Btn>
       </div>
 
       {openComments && (
         <ul className="comment-list">
           {post.comments.map((comment, index) => (
-            <Comments key={index} comment={comment} postId={post.id} />
+            <Comments
+              key={index}
+              comment={comment}
+              postId={post.id}
+              likeComment={(commentId) => likeComment(post.id, commentId)}
+              unlikeComment={(commentId) => unlikeComment(post.id, commentId)}
+              isCommentLiked={(comment) => isCommentLiked(comment)}
+            />
           ))}
         </ul>
       )}

@@ -437,6 +437,18 @@ li {
   transition: text-decoration 0.3s;
 }
 
+.like-comment-liked {
+  font-size: 14rem;
+  border: none;
+  background-color: transparent;
+  font-weight: bold;
+  cursor: pointer;
+  transition: text-decoration 0.3s;
+  margin-right: 3rem;
+  cursor: pointer;
+  color: #4291ff;
+}
+
 .like-comment {
   margin-right: 3rem;
   cursor: pointer;
@@ -595,4 +607,8 @@ li {
   font-size: 27rem;
   margin-bottom: 15rem;
   padding-left: 5rem;
+}
+
+.likedCom {
+  color: #4291ff;
 }

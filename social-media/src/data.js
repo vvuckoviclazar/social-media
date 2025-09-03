@@ -22,14 +22,22 @@ export const userAccount = {
       likes: [{ name: "James Brown" }, { name: "Oliveira Jones" }],
       comments: [
         {
+          id: 10,
           name: "James Brown",
           text: "Makes me ponder on the importance of staying true to one's moral compass.",
           image: "profile4.jpg",
+          commentLikes: [{ name: "Oliveira Jones" }, { name: "Daniel Miller" }],
         },
         {
+          id: 11,
           name: "Oliveira Jones",
           text: "Sometimes the best option is to stick to your principles.",
           image: "profile5.jpg",
+          commentLikes: [
+            { name: "James Brown" },
+            { name: "Daniel Miller" },
+            { name: "Jason Smith" },
+          ],
         },
       ],
       fixed: true,
@@ -48,9 +56,11 @@ export const userAccount = {
       ],
       comments: [
         {
+          id: 12,
           name: "Daniel Miller",
           text: "Couldn't agree more.",
           image: "profile6.jpg",
+          commentLikes: [],
         },
       ],
       fixed: true,

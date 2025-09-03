@@ -1,13 +1,40 @@
-import { useState } from "react";
+import { use, useState } from "react";
 import "./index.css";
 import { IoIosSearch } from "react-icons/io";
 import Btn from "./btn.jsx";
 import Post from "./post.jsx";
 import { userAccount } from "./data";
+import { add } from "date-fns";
 
 function App() {
   const [posts, setPosts] = useState(userAccount.posts);
-  const [inputValue, setInputValue] = useState("");
+  const [inputTextValue, setInputTextValue] = useState("");
+
+  const generateId = () => crypto.randomUUID();
+
+  const addComment = (id, text) => {
+    if (!text.trim()) return;
+
+    setPosts((prev) =>
+      prev.map((p) =>
+        p.id === id
+          ? {
+              ...p,
+              comments: [
+                {
+                  id: generateId(),
+                  name: userAccount.owner,
+                  text,
+                  image: userAccount.picture,
+                  commentLikes: [],
+                },
+                ...p.comments,
+              ],
+            }
+          : p
+      )
+    );
+  };
 
   const likePost = (id) => {
     setPosts((prev) =>
@@ -17,6 +44,55 @@ function App() {
           : p
       )
     );
+  };
+
+  const likeComment = (postId, commentId) => {
+    setPosts((prev) =>
+      prev.map((p) =>
+        p.id !== postId
+          ? p
+          : {
+              ...p,
+              comments: p.comments.map((c) =>
+                c.id !== commentId
+                  ? c
+                  : {
+                      ...c,
+                      commentLikes: [
+                        { name: userAccount.owner },
+                        ...c.commentLikes,
+                      ],
+                    }
+              ),
+            }
+      )
+    );
+  };
+
+  const unlikeComment = (postId, commentId) => {
+    setPosts((prev) =>
+      prev.map((p) =>
+        p.id !== postId
+          ? p
+          : {
+              ...p,
+              comments: p.comments.map((c) =>
+                c.id !== commentId
+                  ? c
+                  : {
+                      ...c,
+                      commentLikes: c.commentLikes.filter(
+                        (l) => l.name !== userAccount.owner
+                      ),
+                    }
+              ),
+            }
+      )
+    );
+  };
+
+  const isCommentLiked = (comment) => {
+    return comment.commentLikes.some((l) => l.name === userAccount.owner);
   };
 
   const unlikePost = (id) => {
@@ -37,24 +113,24 @@ function App() {
     setPosts((prev) => prev.filter((p) => p.id !== id));
   };
 
-  const generateId = () => crypto.randomUUID();
-
-  const handleSubmit = (e) => {
+  const addPost = (e) => {
     e.preventDefault();
+
+    if (!inputTextValue.trim()) return;
 
     const newObject = {
       owner: userAccount.owner,
       picture: userAccount.picture,
       id: generateId(),
       date: new Date().toISOString(),
-      text: inputValue,
+      text: inputTextValue,
       likes: [],
       comments: [],
     };
 
     setPosts((prev) => [newObject, ...prev]);
 
-    setInputValue("");
+    setInputTextValue("");
   };
 
   return (
@@ -91,11 +167,11 @@ function App() {
         <img className="img2" src={`/${userAccount.picture}`} alt="" />
       </div>
 
-      <form onSubmit={handleSubmit} className="write-form">
+      <form onSubmit={addPost} className="write-form">
         <input
           type="text"
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
+          value={inputTextValue}
+          onChange={(e) => setInputTextValue(e.target.value)}
           placeholder="Write a post"
           className="write-post"
         />
@@ -134,6 +210,11 @@ function App() {
               likePost={likePost}
               unlikePost={unlikePost}
               isLiked={post.likes.some((l) => l.name === userAccount.owner)}
+              addComment={addComment}
+              likeComment={likeComment}
+              unlikeComment={unlikeComment}
+              isCommentLiked={isCommentLiked}
+              ownerName={userAccount.owner}
             />
           ))}
         </ul>
