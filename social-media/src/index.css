@@ -68,6 +68,7 @@ header {
 }
 
 .search-bar {
+  position: relative;
   display: flex;
   align-items: center;
   background-color: white;
@@ -646,4 +647,38 @@ li {
   border: 1rem solid rgb(26, 26, 26);
   padding-left: 5rem;
   border-radius: 3rem;
+}
+
+.search-suggestions {
+  padding: 0rem;
+  position: absolute;
+  top: 80%;
+  left: 0.8%;
+  width: 250rem;
+}
+
+.search-friend-card {
+  display: flex;
+  align-items: center;
+  gap: 10rem;
+  margin-bottom: 0rem;
+}
+
+.search-friend-card:hover {
+  background-color: rgb(235, 235, 235);
+  cursor: pointer;
+}
+
+.search-friend-name {
+  font-size: 22rem;
+  font-weight: 300;
+  color: rgb(39, 39, 39);
+  text-align: center;
+}
+
+.search-friend-img {
+  border-radius: 50%;
+  width: 40rem;
+  height: 40rem;
+  object-fit: cover;
 }

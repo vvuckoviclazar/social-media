@@ -4,10 +4,16 @@ import { IoIosSearch } from "react-icons/io";
 import Btn from "./btn.jsx";
 import Post from "./post.jsx";
 import { userAccount } from "./data";
+import Friend from "./friend.jsx";
 
 function App() {
   const [posts, setPosts] = useState(userAccount.posts);
   const [inputTextValue, setInputTextValue] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const filteredFriends = userAccount.friends.filter((friend) =>
+    friend.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   const generateId = () => crypto.randomUUID();
 
@@ -152,13 +158,26 @@ function App() {
       <header>
         <div className="search-bar">
           <IoIosSearch className="search-loop" />
-
           <input
             type="text"
             placeholder="Find friends"
             className="find-friends"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
           />
         </div>
+
+        {searchQuery && (
+          <ul className="search-suggestions">
+            {filteredFriends.length > 0 ? (
+              filteredFriends.map((friend) => (
+                <Friend key={friend.name} friend={friend} />
+              ))
+            ) : (
+              <li className="no-results">No friends found</li>
+            )}
+          </ul>
+        )}
 
         <div className="picture-div">
           <img src={`/${userAccount.picture}`} className="img" alt="" />
