@@ -612,3 +612,38 @@ li {
 .likedCom {
   color: #4291ff;
 }
+
+.name-edit-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.edit-comment {
+  background-color: transparent;
+  border: none;
+  font-size: 18rem;
+}
+
+.edit-comment:hover {
+  color: #3261ed;
+  cursor: pointer;
+}
+
+.edit-comment-active {
+  background-color: transparent;
+  border: none;
+  font-size: 18rem;
+  color: #3261ed;
+  cursor: pointer;
+}
+
+.comment-edit-input {
+  font-size: 17rem;
+  width: 100%;
+  background-color: transparent;
+  border: 1rem solid rgb(26, 26, 26);
+  padding-left: 5rem;
+  border-radius: 3rem;
+}

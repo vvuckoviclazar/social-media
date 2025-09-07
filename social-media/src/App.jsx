@@ -4,7 +4,6 @@ import { IoIosSearch } from "react-icons/io";
 import Btn from "./btn.jsx";
 import Post from "./post.jsx";
 import { userAccount } from "./data";
-import { add } from "date-fns";
 
 function App() {
   const [posts, setPosts] = useState(userAccount.posts);
@@ -133,6 +132,21 @@ function App() {
     setInputTextValue("");
   };
 
+  const updateComment = (postId, commentId, newText) => {
+    setPosts((prev) =>
+      prev.map((p) =>
+        p.id !== postId
+          ? p
+          : {
+              ...p,
+              comments: p.comments.map((c) =>
+                c.id !== commentId ? c : { ...c, text: newText }
+              ),
+            }
+      )
+    );
+  };
+
   return (
     <>
       <header>
@@ -214,6 +228,7 @@ function App() {
               likeComment={likeComment}
               unlikeComment={unlikeComment}
               isCommentLiked={isCommentLiked}
+              updateComment={updateComment}
               ownerName={userAccount.owner}
             />
           ))}

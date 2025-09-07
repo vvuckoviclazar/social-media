@@ -6,7 +6,7 @@ import { MdDelete } from "react-icons/md";
 import Btn from "./btn.jsx";
 import { userAccount } from "./data";
 import { useEffect, useState } from "react";
-import Comments from "./comments.jsx";
+import Comment from "./comments.jsx";
 import { format, formatDistanceToNow } from "date-fns";
 
 function Post({
@@ -21,6 +21,7 @@ function Post({
   unlikeComment,
   isCommentLiked,
   ownerName,
+  updateComment,
 }) {
   const [openOptions, setOpenOptions] = useState(false);
   const [openComments, setOpenComments] = useState(false);
@@ -136,7 +137,7 @@ function Post({
           onClick={() =>
             addComment(post.id, commentText) ||
             setCommentText("") ||
-            setOpenComments(!openComments)
+            setOpenComments(true)
           }
           variation="add-comment-btn"
         >
@@ -147,13 +148,15 @@ function Post({
       {openComments && (
         <ul className="comment-list">
           {post.comments.map((comment, index) => (
-            <Comments
+            <Comment
               key={index}
               comment={comment}
               postId={post.id}
               likeComment={(commentId) => likeComment(post.id, commentId)}
               unlikeComment={(commentId) => unlikeComment(post.id, commentId)}
               isCommentLiked={(comment) => isCommentLiked(comment)}
+              ownerName={ownerName}
+              updateComment={updateComment}
             />
           ))}
         </ul>

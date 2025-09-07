@@ -24,6 +24,10 @@ function Btn({ children, onClick, variation }) {
     modifierClass = "add-comment-btn";
   } else if (variation === "like-comment-liked") {
     modifierClass = "like-comment-liked";
+  } else if (variation === "edit-comment") {
+    modifierClass = "edit-comment";
+  } else if (variation === "edit-comment-active") {
+    modifierClass = "edit-comment-active";
   }
 
   const finalClass = `${baseClass} ${modifierClass}`;
